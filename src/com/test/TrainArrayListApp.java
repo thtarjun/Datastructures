@@ -1,6 +1,5 @@
 package com.test;
 
-import com.ds.BasicLinkedList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +82,7 @@ public class TrainArrayListApp {
 
     private void firstStop() {
         //at this stop we need to pull off the first box car and insert a new BoxCar after the farm machinery
-        TrainCar boxcar = train.remove(0);
+        TrainCar boxcar = train.remove(1);
 
         System.out.println("First Stop: Removed - " + boxcar);
 
@@ -113,12 +112,14 @@ public class TrainArrayListApp {
         //at this stop we simply pull the remaining cars off of the train until we have no more train.
 
         try{
-            while(true) {
+            //noinspection InfiniteLoopStatement
+            while(trainSize() > 0) {
                 TrainCar car = train.remove(0);
                 System.out.println("Last Stop: Removed - " + car);
             }
         } catch (IllegalStateException ise) {
             //when we get an ise that means we don't have any more cars to remove and the train is now empty
+            System.out.println( "Train is empty!" );
         }
 
         //print out the train cars
